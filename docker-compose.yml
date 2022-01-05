@@ -1,0 +1,52 @@
+version: '2.1'
+
+services:
+  devcmd:
+    image: mesfreeman/devcmd:latest
+    container_name: devcmd
+    hostname: devcmd
+    tty: true
+    ports:
+      - "22:22"
+      - "80:80"
+      - "443:443"
+    networks:
+      - devnet
+    volumes:
+      - "./code:/var/www"
+      - "./images/ubuntu/nginx/vhosts:/etc/nginx/sites-enabled"
+      - "./images/ubuntu/nginx/logs:/var/log/nginx"
+      - "./images/ubuntu/golang/path:/root/go"
+
+  devmysql:
+    image: mysql:8.0
+    container_name: devmysql
+    hostname: devmysql
+    tty: true
+    ports:
+      - "3306:3306"
+    networks:
+      - devnet
+    volumes:
+      - "./images/mysql/config/my.cnf:/etc/mysql/my.cnf"
+      - "./images/mysql/data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      TZ: Asia/shanghai
+
+  devredis:
+    image: redis:6.2
+    container_name: devredis
+    hostname: devredis
+    ports:
+      - "6379:6379"
+    networks:
+      - devnet
+    volumes:
+      - "./images/redis/config/redis.conf:/etc/redis/config/redis.conf"
+      - "./images/redis/data:/var/lib/redis"
+    command: redis-server /etc/redis/config/redis.conf --appendonly yes
+
+networks:
+  devnet: null
