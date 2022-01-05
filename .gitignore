@@ -3,11 +3,6 @@
 images/mysql/data
 images/redis/data
 
-images/ubuntu/golang/path/*
-
-images/ubuntu/nginx/vhosts/*
-!images/ubuntu/nginx/vhosts/default.conf
-
 code/*
 !code/index.html
 !code/index.php
