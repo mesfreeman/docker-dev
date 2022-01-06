@@ -21,6 +21,7 @@ services:
       - "./images/ubuntu/php8/cli/php.ini:/etc/php/8.0/cli/php.ini"
       - "./images/ubuntu/php8/fpm/php.ini:/etc/php/8.0/fpm/php.ini"
       - "./images/ubuntu/golang/path:/root/go"
+    command: /usr/sbin/sshd -d
 
   devmysql:
     image: mysql:8.0
