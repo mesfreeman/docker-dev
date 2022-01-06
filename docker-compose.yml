@@ -16,10 +16,10 @@ services:
       - "./code:/var/www"
       - "./images/ubuntu/nginx/vhosts:/etc/nginx/sites-enabled"
       - "./images/ubuntu/nginx/logs:/var/log/nginx"
-      - "./images/ubuntu/php7/cli/php.ini://etc/php/7.4/cli/php.ini"
-      - "./images/ubuntu/php7/fpm/php.ini://etc/php/7.4/fpm/php.ini"
-      - "./images/ubuntu/php8/cli/php.ini://etc/php/8.0/cli/php.ini"
-      - "./images/ubuntu/php8/fpm/php.ini://etc/php/8.0/fpm/php.ini"
+      - "./images/ubuntu/php7/cli/php.ini:/etc/php/7.4/cli/php.ini"
+      - "./images/ubuntu/php7/fpm/php.ini:/etc/php/7.4/fpm/php.ini"
+      - "./images/ubuntu/php8/cli/php.ini:/etc/php/8.0/cli/php.ini"
+      - "./images/ubuntu/php8/fpm/php.ini:/etc/php/8.0/fpm/php.ini"
       - "./images/ubuntu/golang/path:/root/go"
 
   devmysql:
